@@ -1,8 +1,10 @@
-package com.wd.health_home;
+package com.wd.health_home.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.wd.health_home.R;
 
 import static java.lang.Thread.sleep;
 
