@@ -1,8 +1,10 @@
-package com.wd.health_home;
+package com.wd.health_home.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.wd.health_home.R;
 
 import static java.lang.Thread.sleep;
 
@@ -12,6 +14,7 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
 
         new Thread(new Runnable() {
             @Override
@@ -27,7 +30,8 @@ public class StartActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
-                        startActivity(new Intent(StartActivity.this, HomeActivity.class));
+
+                        startActivity(new Intent(StartActivity.this, BootPageActivity.class));
                         StartActivity.this.finish();
                     }
                 });

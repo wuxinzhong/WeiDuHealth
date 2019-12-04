@@ -3,18 +3,17 @@
     package="com.wd.health_home">
 
     <application>
-        <activity android:name=".StartActivity" android:theme="@style/StartTheme">
-
+        <activity android:name=".activity.BootPageActivity"></activity>
+        <activity
+            android:name=".activity.StartActivity"
+            android:theme="@style/StartTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".HomeActivity">
-
-        </activity>
+        <activity android:name=".activity.HomeActivity"></activity>
     </application>
 
 </manifest>
