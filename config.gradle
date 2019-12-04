@@ -4,9 +4,9 @@ ext {
     //需要运行的组件，当allPackage为false的时候，此变量生效，模块名参照settings.gradle中的
     needPackage = ['open_main',"open_login"]
     projectConfig = [
-            applicationId    : "com.dingtao.rrmmp",
+            applicationId    : "com.wd.health",
             compileSdkVersion: 28,
-            minSdkVersion    : 21,
+            minSdkVersion    : 15,
             targetSdkVersion : 28,
             versionCode      : 1,
             versionName      : "1.0"

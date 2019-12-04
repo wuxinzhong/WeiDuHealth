@@ -4,7 +4,6 @@ android {
     compileSdkVersion 28
     buildToolsVersion "29.0.2"
 
-
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 28
@@ -20,6 +19,7 @@ android {
         }
 
     }
+
 
     buildTypes {
         release {
@@ -45,5 +45,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation project(':common')
+
+    //阿里aRouter
+    implementation 'com.alibaba:arouter-api:1.4.0'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
+
+    api project(':common')
 }
