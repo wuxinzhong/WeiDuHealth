@@ -21,6 +21,10 @@ import com.wd.health_home.fragment.Frag_shou;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.view.WindowManager;
+import android.widget.LinearLayout;
+
+import com.wd.health_home.R;
 
 
 public class HomeActivity extends AppCompatActivity {

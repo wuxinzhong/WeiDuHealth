@@ -15,6 +15,7 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -29,7 +30,8 @@ public class StartActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
-                        startActivity(new Intent(StartActivity.this, HomeActivity.class));
+
+                        startActivity(new Intent(StartActivity.this, BootPageActivity.class));
                         StartActivity.this.finish();
                     }
                 });

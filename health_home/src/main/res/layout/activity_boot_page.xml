@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:gravity="center_vertical"
+    tools:context=".activity.BootPageActivity">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/boot_viewPage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/boot_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="422dp"
+        android:gravity="center_horizontal"
+        android:text="专业在线问诊"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/boot_btn"
+        android:layout_width="84dp"
+        android:layout_height="34dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="108dp"
+        android:background="@drawable/boot_page_radio_button_shap_check"
+        android:text="马上进入"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <RadioGroup
+        android:id="@+id/boot_radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="64dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/boot_rb1"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:background="@drawable/boot_page_radio_button_selector"
+            android:button="@null"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/boot_rb2"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginLeft="14dp"
+            android:background="@drawable/boot_page_radio_button_selector"
+            android:button="@null" />
+
+        <RadioButton
+            android:id="@+id/boot_rb3"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginLeft="14dp"
+            android:background="@drawable/boot_page_radio_button_selector"
+            android:button="@null" />
+
+        <RadioButton
+            android:id="@+id/boot_rb4"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginLeft="14dp"
+            android:background="@drawable/boot_page_radio_button_selector"
+            android:button="@null" />
+
+        <RadioButton
+            android:id="@+id/boot_rb5"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginLeft="14dp"
+            android:background="@drawable/boot_page_radio_button_selector"
+            android:button="@null" />
+
+    </RadioGroup>
+
+
+</RelativeLayout>
