@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.wd.health_write_sick_circle_activity">
+
+    <application>
+        <activity android:name=".WriteSickCircleActivity"></activity>
+    </application>
+
+</manifest>

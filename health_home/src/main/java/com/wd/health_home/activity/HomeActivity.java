@@ -1,44 +1,47 @@
 package com.wd.health_home.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
-
-import android.widget.CheckBox;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.wd.health_home.R;
+import com.wd.health_home_fragment.fragment.HomeFragment;
+import com.wd.health_movie_fragment.MovieFragment;
+import com.wd.health_sick_circle_fragment.SickCircleFragment;
+import com.wd.health_write_sick_circle_activity.WriteSickCircleActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import android.view.WindowManager;
-import android.widget.LinearLayout;
 
-import com.wd.health_home.R;
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
-
-
-public class HomeActivity extends AppCompatActivity {
-
-
-
-    private LinearLayout bg;
-    private List<Fragment> list=new  ArrayList<>();
-    private ViewPager vp;
-    private RadioGroup rg;
-    private RadioButton shou,movie;
-    private CheckBox quan;
+    private List<Fragment> list = new ArrayList<>();
+    private ImageView sick_circle_img;
+    private ImageView comments_img;
+    private HomeFragment mHomeFragment;
+    private SickCircleFragment mSickCircleFragment;
+    private MovieFragment mMovieFragment;
+    private long mExitTime;
+    private ImageView rb_shou_wei;
+    private ImageView rb_shou_xuan;
+    private ImageView rb_movie_wei;
+    private ImageView rb_movie_xuan;
+    private LinearLayout home_lin;
+    private LinearLayout movie_lin;
+    private LinearLayout sick_lin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,52 +65,108 @@ public class HomeActivity extends AppCompatActivity {
         initView();
 
 
+        mHomeFragment = new HomeFragment();
+        mSickCircleFragment = new SickCircleFragment();
+        mMovieFragment = new MovieFragment();
+        list.add(mHomeFragment);
+        list.add(mSickCircleFragment);
+        list.add(mMovieFragment);
+
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.vp, mHomeFragment)
+                .add(R.id.vp, mSickCircleFragment)
+                .add(R.id.vp, mMovieFragment)
+                .show(mHomeFragment)
+                .hide(mSickCircleFragment)
+                .hide(mMovieFragment)
+                .commit();
     }
 
 
     private void initView() {
-        bg = (LinearLayout) findViewById(R.id.bg);
-        vp = findViewById(R.id.vp);
-        rg = findViewById(R.id.rg);
-        shou = findViewById(R.id.rb_shou);
-        quan = findViewById(R.id.rb_quan);
-        movie = findViewById(R.id.rb_movie);
-//        list.add(new Frag_shou());
-//        list.add(new Frag_quan());
-//        list.add(new Frag_movie());
-//        PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager(),list);
-//        vp.setAdapter(pageAdapter);
-        vp.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int i, float v, int i1) {
+        sick_circle_img = (ImageView) findViewById(R.id.sick_circle_img);
+        comments_img = (ImageView) findViewById(R.id.comments_img);
+        rb_shou_wei = (ImageView) findViewById(R.id.rb_shou_wei);
+        rb_shou_xuan = (ImageView) findViewById(R.id.rb_shou_xuan);
+        rb_movie_wei = (ImageView) findViewById(R.id.rb_movie_wei);
+        rb_movie_xuan = (ImageView) findViewById(R.id.rb_movie_xuan);
+        home_lin = (LinearLayout) findViewById(R.id.home_lin);
+        home_lin.setOnClickListener(this);
+        movie_lin = (LinearLayout) findViewById(R.id.movie_lin);
+        movie_lin.setOnClickListener(this);
+        sick_lin = (LinearLayout) findViewById(R.id.sick_lin);
+        sick_lin.setOnClickListener(this);
+        comments_img.setOnClickListener(this);
+    }
 
-            }
+    @Override
+    public void onClick(View v) {
 
-            @Override
-            public void onPageSelected(int i) {
-                switch (i){
-                    case 0:shou.setChecked(true);break;
-                    case 1:quan.setChecked(true);break;
-                    case 2:movie.setChecked(true);break;
-                }
-            }
+        comments_img.setVisibility(View.GONE);
+        rb_movie_xuan.setVisibility(View.GONE);
+        rb_shou_xuan.setVisibility(View.GONE);
 
-            @Override
-            public void onPageScrollStateChanged(int i) {
+        sick_circle_img.setVisibility(View.VISIBLE);
+        rb_movie_wei.setVisibility(View.VISIBLE);
+        rb_shou_wei.setVisibility(View.VISIBLE);
 
-            }
-        });
-        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.rb_shou) {
-                    vp.setCurrentItem(0);
-                } else if (checkedId == R.id.rb_quan) {
-                    vp.setCurrentItem(1);
-                } else if (checkedId == R.id.rb_movie) {
-                    vp.setCurrentItem(2);
-                }
-            }
-        });
+        if (v.getId() == R.id.home_lin) {
+            rb_shou_xuan.setVisibility(View.VISIBLE);
+            rb_shou_wei.setVisibility(View.GONE);
+
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .show(mHomeFragment)
+                    .hide(mMovieFragment)
+                    .hide(mSickCircleFragment)
+                    .commit();
+        } else if (v.getId() == R.id.sick_lin) {
+            comments_img.setVisibility(View.VISIBLE);
+            sick_circle_img.setVisibility(View.GONE);
+
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .show(mSickCircleFragment)
+                    .hide(mMovieFragment)
+                    .hide(mHomeFragment)
+                    .commit();
+
+        } else if (v.getId() == R.id.movie_lin) {
+            rb_movie_xuan.setVisibility(View.VISIBLE);
+            rb_movie_wei.setVisibility(View.GONE);
+
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .show(mMovieFragment)
+                    .hide(mHomeFragment)
+                    .hide(mSickCircleFragment)
+                    .commit();
+
+        } else if (v.getId() == R.id.comments_img) {
+            startActivity(new Intent(HomeActivity.this, WriteSickCircleActivity.class));
+        }
+    }
+
+
+    //对返回键进行监听
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+
+            exit();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    public void exit() {
+        if ((System.currentTimeMillis() - mExitTime) > 2000) {
+            Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
+            mExitTime = System.currentTimeMillis();
+        } else {
+            finish();
+            System.exit(0);
+        }
     }
 }
