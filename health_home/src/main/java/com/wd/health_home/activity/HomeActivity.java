@@ -12,15 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.wd.health_home.R;
-import com.wd.health_home.adapter.PageAdapter;
-import com.wd.health_home.fragment.Frag_movie;
-import com.wd.health_home.fragment.Frag_quan;
-import com.wd.health_home.fragment.Frag_shou;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +37,8 @@ public class HomeActivity extends AppCompatActivity {
     private List<Fragment> list=new  ArrayList<>();
     private ViewPager vp;
     private RadioGroup rg;
-    private RadioButton shou,quan,movie;
+    private RadioButton shou,movie;
+    private CheckBox quan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,9 +65,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-
-
-
     private void initView() {
         bg = (LinearLayout) findViewById(R.id.bg);
         vp = findViewById(R.id.vp);
@@ -77,11 +72,11 @@ public class HomeActivity extends AppCompatActivity {
         shou = findViewById(R.id.rb_shou);
         quan = findViewById(R.id.rb_quan);
         movie = findViewById(R.id.rb_movie);
-        list.add(new Frag_shou());
-        list.add(new Frag_quan());
-        list.add(new Frag_movie());
-        PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager(),list);
-        vp.setAdapter(pageAdapter);
+//        list.add(new Frag_shou());
+//        list.add(new Frag_quan());
+//        list.add(new Frag_movie());
+//        PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager(),list);
+//        vp.setAdapter(pageAdapter);
         vp.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i1) {

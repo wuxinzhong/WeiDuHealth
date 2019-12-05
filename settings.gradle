@@ -1,1 +1,1 @@
-include ':app', ':health_home', ':common'
+include ':app', ':health_home', ':common', ':health_home_fragment'
