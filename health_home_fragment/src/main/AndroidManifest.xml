@@ -1,2 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wd.health_home_fragment" />
+    package="com.wd.health_home_fragment">
+
+    <application>
+        <activity android:name=".activity.InformationMoreActivity"></activity>
+        <activity android:name=".activity.InformationDetailsActivity" />
+        <activity android:name=".activity.DrugDetailsActivity" />
+        <activity android:name=".activity.DiseaseDetailsActivity" />
+        <activity android:name=".activity.DiseaseActivity" />
+    </application>
+
+</manifest>

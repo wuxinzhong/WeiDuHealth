@@ -36,7 +36,7 @@ public class HttpUtils {
 
         Retrofit build1 = new Retrofit.Builder()
                 .client(build)
-                .baseUrl("http://172.17.8.100/health/")//内网接口
+//                .baseUrl("http://172.17.8.100/health/")//内网接口
                 .baseUrl("http://mobile.bwstudent.com/health/")//外网接口
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

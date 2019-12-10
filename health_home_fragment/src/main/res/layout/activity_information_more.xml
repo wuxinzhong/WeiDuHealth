@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2"
+    android:orientation="vertical"
+    tools:context=".activity.InformationMoreActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="22dp"
+            android:gravity="center_vertical"
+            android:padding="10dp">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/information_more_login"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginLeft="2dp"
+                android:padding="2dp"
+                app:placeholderImage="@drawable/register_icon_invitatiion_code_n" />
+
+            <TextView
+                android:id="@+id/information_more_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <CheckBox
+                android:id="@+id/information_more_news"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="2dp"
+                android:button="@null"
+                android:drawableLeft="@drawable/home_top_news_black"
+                android:paddingLeft="5dp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/information_more_xRecycle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:background="@android:color/white" />
+
+</LinearLayout>
