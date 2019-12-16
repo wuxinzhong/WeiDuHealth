@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg"
+    tools:context=".activity.NewsPwdActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="24dp">
+
+        <ImageView
+            android:id="@+id/my_new_pwd_back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:padding="10dp"
+            android:src="@drawable/common_icon_back_white_n" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="设置新密码"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="260dp"
+        android:layout_height="15dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="310dp"
+        android:background="@drawable/linear1_shap" />
+
+
+    <LinearLayout
+        android:layout_width="240dp"
+        android:layout_height="25dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="310dp"
+        android:background="@drawable/linear2_shap"
+        android:orientation="vertical" />
+
+
+    <RelativeLayout
+        android:layout_width="280dp"
+        android:layout_height="144dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="170dp"
+        android:background="@drawable/linear3_shap">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/my_new_pwd_pwd"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/white"
+                    android:gravity="center_vertical"
+                    android:hint="请设置新密码"
+                    android:password="true"
+                    android:textColorHint="#999"
+                    android:textSize="14sp" />
+
+                <CheckBox
+                    android:id="@+id/my_new_pwd_hide_eye"
+                    android:layout_width="20dp"
+                    android:layout_height="14dp"
+                    android:background="@drawable/login_eye"
+                    android:button="@null" />
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="#ccc" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginRight="30dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/my_new_pwd_pwd1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/white"
+                    android:gravity="center_vertical"
+                    android:hint="请再次确认密码"
+                    android:password="true"
+                    android:textColorHint="#999"
+                    android:textSize="14sp" />
+
+                <CheckBox
+                    android:id="@+id/my_new_pwd_hide_eye1"
+                    android:layout_width="20dp"
+                    android:layout_height="14dp"
+                    android:background="@drawable/login_eye"
+                    android:button="@null" />
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="#ccc" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/my_new_pwd_btn_finish"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/btn_next_shap"
+        android:text="完成"
+        android:textColor="#3087ea"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

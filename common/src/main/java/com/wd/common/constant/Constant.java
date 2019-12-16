@@ -5,6 +5,7 @@ import com.wd.common.bean.CommonDrugBean;
 import com.wd.common.bean.DiseaseBean;
 import com.wd.common.bean.DiseaseDetailsBean;
 import com.wd.common.bean.DivisionBean;
+import com.wd.common.bean.DoctorBean;
 import com.wd.common.bean.DrugBean;
 import com.wd.common.bean.DrugDetailsBean;
 import com.wd.common.bean.EvaluatingBean;
@@ -103,5 +104,14 @@ public interface Constant {
     @FormUrlEncoded
     @POST("user/v1/sendOutEmailCode")
     Observable<SendEmailBean> SEND_EMAIL_BEAN(@Field("email") String email);
+
+
+    //医生列表
+    @GET("user/inquiry/v1/findDoctorList")
+    Observable<DoctorBean> DOCTOR_BEAN(@Query("deptId") int deptId,
+                                       @Query("condition") int condition,
+                                       @Query("sortBy") int sortBy,
+                                       @Query("page") int page,
+                                       @Query("count") int count);
 
 }
