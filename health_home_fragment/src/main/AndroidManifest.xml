@@ -3,7 +3,9 @@
     package="com.wd.health_home_fragment">
 
     <application>
-        <activity android:name=".activity.InformationMoreActivity"></activity>
+        <activity android:name=".activity.InterrogationActivity"></activity>
+        <activity android:name=".activity.EvaluatingActivity" />
+        <activity android:name=".activity.InformationMoreActivity" />
         <activity android:name=".activity.InformationDetailsActivity" />
         <activity android:name=".activity.DrugDetailsActivity" />
         <activity android:name=".activity.DiseaseDetailsActivity" />

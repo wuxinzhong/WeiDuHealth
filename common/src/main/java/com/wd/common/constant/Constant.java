@@ -7,12 +7,20 @@ import com.wd.common.bean.DiseaseDetailsBean;
 import com.wd.common.bean.DivisionBean;
 import com.wd.common.bean.DrugBean;
 import com.wd.common.bean.DrugDetailsBean;
+import com.wd.common.bean.EvaluatingBean;
 import com.wd.common.bean.InformationBean;
 import com.wd.common.bean.InformationDetailsBean;
 import com.wd.common.bean.InformationListBean;
+import com.wd.common.bean.LoginBean;
+import com.wd.common.bean.RegressBean;
+import com.wd.common.bean.SendEmailBean;
 
 import io.reactivex.Observable;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 /**
@@ -54,9 +62,10 @@ public interface Constant {
     @GET("share/knowledgeBase/v1/findDrugsKnowledge")
     Observable<DrugDetailsBean> DRUG_DETAILS_BEAN(@Query("id") int id);
 
-//    //健康评测
-//    @GET("user/verify/v1/userHealthTest")
-//    Observable<>
+    //健康评测
+    @GET("user/verify/v1/userHealthTest")
+    Observable<EvaluatingBean> EVALUATING_BEAN(@Header("userId") int userId,
+                                               @Header("sessionId") String sessionId);
 
     //健康资讯分类列表
     @GET("share/information/v1/findInformationPlateList")
@@ -73,5 +82,26 @@ public interface Constant {
     Observable<InformationDetailsBean> INFORMATION_DETAILS_BEAN(@Query("userId") int userId,
                                                                 @Query("sessionId") String sessionId,
                                                                 @Query("infoId") int infoId);
+
+
+    //登录
+    @FormUrlEncoded
+    @POST("user/v1/login")
+    Observable<LoginBean> LOGIN_BEAN(@Field("email") String email,
+                                     @Field("pwd") String pwd);
+
+    //注册
+    @FormUrlEncoded
+    @POST("user/v1/register")
+    Observable<RegressBean> REGRESS_BEAN(@Field("email") String email,
+                                         @Field("code") String code,
+                                         @Field("pwd1") String pwd1,
+                                         @Field("pwd2") String pwd2,
+                                         @Field("invitationCode") String invitationCode);
+
+    //获取邮箱验证码
+    @FormUrlEncoded
+    @POST("user/v1/sendOutEmailCode")
+    Observable<SendEmailBean> SEND_EMAIL_BEAN(@Field("email") String email);
 
 }

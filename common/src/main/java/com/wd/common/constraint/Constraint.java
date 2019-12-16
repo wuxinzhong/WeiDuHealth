@@ -7,9 +7,13 @@ import com.wd.common.bean.DiseaseDetailsBean;
 import com.wd.common.bean.DivisionBean;
 import com.wd.common.bean.DrugBean;
 import com.wd.common.bean.DrugDetailsBean;
+import com.wd.common.bean.EvaluatingBean;
 import com.wd.common.bean.InformationBean;
 import com.wd.common.bean.InformationDetailsBean;
 import com.wd.common.bean.InformationListBean;
+import com.wd.common.bean.LoginBean;
+import com.wd.common.bean.RegressBean;
+import com.wd.common.bean.SendEmailBean;
 
 /**
  * <p>文件描述： 契约类   <p>
@@ -42,11 +46,25 @@ public interface Constraint {
         void IInformationError(String s);
     }
 
-    interface IInformationView extends IBaseView{
+    interface IDivisionView extends IBaseView {
+        //查询科室列表
+        void IDivisionSuccess(DivisionBean divisionBean);
+
+        void IDivisionError(String s);
+    }
+
+    interface IInformationView extends IBaseView {
         //健康资讯列表
         void IInformationSuccess(InformationBean informationBean);
 
         void IInformationError(String s);
+    }
+
+    //健康测评
+    interface IEvaluatingView extends IBaseView {
+        void evaluatingSuccess(EvaluatingBean evaluatingBean);
+
+        void evaluatingError(String s);
     }
 
     //首页知识库二级页
@@ -91,6 +109,27 @@ public interface Constraint {
         void IInformationDetailsSuccess(InformationDetailsBean informationDetailsBean);
 
         void IInformationDetailsError(String s);
+    }
+
+
+    //登录
+    interface ILoginView extends IBaseView {
+        void loginSuccess(LoginBean loginBean);
+
+        void loginError(String s);
+    }
+
+
+    interface IRegressView extends IBaseView {
+        //注册
+        void regressSuccess(RegressBean regressBean);
+
+        void regressError(String s);
+
+        //发送邮箱验证码
+        void sendEmailSuccess(SendEmailBean regressBean);
+
+        void sendEmailError(String s);
     }
 
 }

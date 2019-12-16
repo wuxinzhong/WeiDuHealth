@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2"
+    android:orientation="vertical"
+    tools:context=".activity.InterrogationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="22dp"
+            android:gravity="center_vertical"
+            android:padding="10dp">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/interrogation_login"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                app:roundAsCircle="true"
+                app:actualImageScaleType="centerCrop"
+                android:layout_marginLeft="2dp"
+                android:padding="2dp"
+                app:placeholderImage="@drawable/register_icon_invitatiion_code_n" />
+
+            <CheckBox
+                android:id="@+id/interrogation_news"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="2dp"
+                android:button="@null"
+                android:drawableLeft="@drawable/home_top_news_black"
+                android:paddingLeft="5dp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/interrogation_recycle_kemu"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginTop="6dp"
+        android:background="@android:color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="2dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/interrogation_zonghe"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="综合"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/interrogation_haoping"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="好评"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/interrogation_zixunSum"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="咨询数"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/interrogation_price_paixu"
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="价格"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/interrogation_price_paixu_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:src="@drawable/common_button_sequence_n" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/interrogation_bg"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/interrogation_img"
+                android:layout_width="match_parent"
+                android:layout_height="184dp" />
+
+            <TextView
+                android:id="@+id/interrogation_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/interrogation_img"
+                android:layout_marginTop="9dp"
+                android:text="昵称"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/interrogation_zhiwei"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/interrogation_name"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/interrogation_name"
+                android:text="副主任医师"
+                android:textColor="#333333"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/interrogation_adress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/interrogation_name"
+                android:layout_marginTop="10dp"
+                android:text="广东省"
+                android:textColor="#333333"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/interrogation_haopinglu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/interrogation_adress"
+                android:layout_marginTop="10dp"
+                android:text="好评"
+                android:textColor="#333333"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/interrogation_sum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/interrogation_adress"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/interrogation_haopinglu"
+                android:text="服务患者数"
+                android:textColor="#333333"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/interrogation_more"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_below="@id/interrogation_img"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="26dp"
+                android:padding="5dp"
+                android:src="@drawable/common_icon_more_n" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/interrogation_bg_bottom"
+            android:layout_marginRight="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/interrogation_price"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="500H币/次"
+                android:textColor="#333333"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/interrogation_btn_zixun"
+                android:layout_width="98dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/interrogation_bg_btn"
+                android:text="立即咨询"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/interrogation_img_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingTop="18dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/common_list_previous_n" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/interrogation_doctor_recycle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:paddingTop="18dp" />
+
+        <ImageView
+            android:id="@+id/interrogation_img_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingTop="18dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/common_information_next_n" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

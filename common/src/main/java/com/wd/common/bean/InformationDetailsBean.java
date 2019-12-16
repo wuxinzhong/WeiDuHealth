@@ -15,7 +15,7 @@ public class InformationDetailsBean {
     public static class ResultBean {
         /**
          * content : <div class="article undefined"><p style="text-align:left;"><span style="color:#222222">黄芪性甘，微温。</span></p><div id="container4AD">
-         <div name="PAJK_AD" data-ubtid="sect-recommendAd" classname="detail-ad" id="TT022" data-ad-code="TT022" data-need-login="{true}" data-page-id="H5web_application_article_bannerdetail">
+         <div name="PAJK_AD" data-ubtid="sect-recommendAd" classname="detail-ad" id="TT022" data-ad-code="TT022" data-need-login_eye="{true}" data-page-id="H5web_application_article_bannerdetail">
          </div>
          </div>
          <div data-ubtid="sect-inquiry" id="container4Inquiry">

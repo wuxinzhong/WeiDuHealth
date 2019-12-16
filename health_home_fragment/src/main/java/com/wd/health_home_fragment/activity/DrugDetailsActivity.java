@@ -1,6 +1,8 @@
 package com.wd.health_home_fragment.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -10,9 +12,16 @@ import android.widget.Toast;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wd.common.base.BaseActivity;
 import com.wd.common.bean.DrugDetailsBean;
+import com.wd.common.bean.User;
 import com.wd.common.constraint.Constraint;
+import com.wd.common.dao.DaoMaster;
+import com.wd.common.dao.DaoSession;
+import com.wd.common.dao.UserDao;
 import com.wd.health_home_fragment.R;
 import com.wd.health_home_fragment.presenter.DrugDetailsPresenter;
+import com.wd.health_my.MyActivity;
+
+import java.util.List;
 
 public class DrugDetailsActivity extends BaseActivity<DrugDetailsPresenter> implements Constraint.IDrugThree, View.OnClickListener {
 
@@ -66,6 +75,24 @@ public class DrugDetailsActivity extends BaseActivity<DrugDetailsPresenter> impl
 
     @Override
     protected void initListener() {
+
+        SharedPreferences config = getSharedPreferences("config", MODE_PRIVATE);
+        boolean isFirst = config.getBoolean("isFirst", false);
+        if (isFirst) {
+
+            DaoSession daoSession = DaoMaster.newDevSession(this, UserDao.TABLENAME);
+            UserDao userDao = daoSession.getUserDao();
+            List<User> users = userDao.loadAll();
+
+            String headPic = users.get(0).getHeadPic();
+
+            Uri uri = Uri.parse(headPic);
+            drug_details_login.setImageURI(uri);
+
+        } else {
+            Uri uri = Uri.parse("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&g=0.jpg");
+            drug_details_login.setImageURI(uri);
+        }
 
     }
 
@@ -122,7 +149,7 @@ public class DrugDetailsActivity extends BaseActivity<DrugDetailsPresenter> impl
     public void onClick(View v) {
         if (v.getId() == R.id.drug_details_login) {
 
-            Toast.makeText(this, "登录", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, MyActivity.class));
 
         } else if (v.getId() == R.id.drug_details_news) {
 

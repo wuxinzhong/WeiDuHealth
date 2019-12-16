@@ -3,7 +3,7 @@
     package="com.wd.health_my">
 
     <application>
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".MyActivity"></activity>
     </application>
 
 </manifest>

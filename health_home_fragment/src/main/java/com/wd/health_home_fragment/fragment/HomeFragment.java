@@ -1,16 +1,18 @@
 package com.wd.health_home_fragment.fragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebView;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -21,18 +23,26 @@ import com.wd.common.bean.BannerBean;
 import com.wd.common.bean.DivisionBean;
 import com.wd.common.bean.InformationBean;
 import com.wd.common.bean.InformationListBean;
+import com.wd.common.bean.User;
 import com.wd.common.constraint.Constraint;
+import com.wd.common.dao.DaoMaster;
+import com.wd.common.dao.DaoSession;
+import com.wd.common.dao.UserDao;
 import com.wd.health_home_fragment.R;
 import com.wd.health_home_fragment.activity.DiseaseActivity;
+import com.wd.health_home_fragment.activity.EvaluatingActivity;
 import com.wd.health_home_fragment.activity.InformationDetailsActivity;
 import com.wd.health_home_fragment.activity.InformationMoreActivity;
+import com.wd.health_home_fragment.activity.InterrogationActivity;
 import com.wd.health_home_fragment.adapter.DivisionAdapter;
 import com.wd.health_home_fragment.adapter.InformationAdapter;
 import com.wd.health_home_fragment.adapter.InformationListAdapter;
 import com.wd.health_home_fragment.presenter.HomePresenter;
-import com.wd.health_my.LoginActivity;
+import com.wd.health_my.MyActivity;
 
 import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * <p>文件描述：<p>
@@ -61,6 +71,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements Constra
     private int mPosition;
     private String mName;
 
+
     @Override
     protected void initData() {
 
@@ -68,6 +79,14 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements Constra
         home_inquiry_division.setLayoutManager(gridLayoutManager);
         mDivisionAdapter = new DivisionAdapter();
         home_inquiry_division.setAdapter(mDivisionAdapter);
+        mDivisionAdapter.setOnItemClickListener(new DivisionAdapter.OnItemClickListener() {
+            @Override
+            public void onClick(int position) {
+                Intent intent = new Intent(getContext(), InterrogationActivity.class);
+                intent.putExtra("id", position);
+                startActivity(intent);
+            }
+        });
 
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -118,6 +137,27 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements Constra
         home_inquiry_drug.setOnClickListener(this);
         home_inquiry_more.setOnClickListener(this);
         home_inquiry_login.setOnClickListener(this);
+        home_inquiry_evaluating.setOnClickListener(this);
+        home_inquiry_news.setOnClickListener(this);
+
+        SharedPreferences config = getContext().getSharedPreferences("config", MODE_PRIVATE);
+        boolean isFirst = config.getBoolean("isFirst", false);
+        if (isFirst) {
+
+            DaoSession daoSession = DaoMaster.newDevSession(getContext(), UserDao.TABLENAME);
+            UserDao userDao = daoSession.getUserDao();
+            List<User> users = userDao.loadAll();
+
+            String headPic = users.get(0).getHeadPic();
+
+            Uri uri = Uri.parse(headPic);
+            home_inquiry_login.setImageURI(uri);
+
+        } else {
+            Uri uri = Uri.parse("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&g=0.jpg");
+            home_inquiry_login.setImageURI(uri);
+        }
+
     }
 
     protected void initView(View view) {
@@ -161,7 +201,6 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements Constra
             home_inquiry_xBanner.setPageTransformer(Transformer.Cube);
             home_inquiry_xBanner.setPageChangeDuration(3000);
             home_inquiry_xBanner.startAutoPlay();
-
 
 
         }
@@ -233,6 +272,10 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements Constra
 
     @Override
     public void onClick(View v) {
+
+        SharedPreferences config = getActivity().getSharedPreferences("config", MODE_PRIVATE);
+        boolean isFirst = config.getBoolean("isFirst", false);
+
         if (v.getId() == R.id.home_inquiry_disease) {
 
             Intent intent = new Intent(getContext(), DiseaseActivity.class);
@@ -253,7 +296,19 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements Constra
 
         } else if (v.getId() == R.id.home_inquiry_login) {
 
-            startActivity(new Intent(getContext(), LoginActivity.class));
+            startActivity(new Intent(getContext(), MyActivity.class));
+
+        } else if (v.getId() == R.id.home_inquiry_evaluating) {
+
+            if (isFirst) {
+                startActivity(new Intent(getContext(), EvaluatingActivity.class));
+            } else {
+                Toast.makeText(getContext(), "请先登录", Toast.LENGTH_SHORT).show();
+            }
+
+        } else if (v.getId() == R.id.home_inquiry_news) {
+
+            Toast.makeText(getContext(), "消息", Toast.LENGTH_SHORT).show();
 
         }
     }

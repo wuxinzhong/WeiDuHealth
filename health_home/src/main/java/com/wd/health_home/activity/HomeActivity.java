@@ -28,7 +28,6 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private List<Fragment> list = new ArrayList<>();
     private ImageView sick_circle_img;
     private ImageView comments_img;
     private HomeFragment mHomeFragment;
@@ -68,9 +67,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         mHomeFragment = new HomeFragment();
         mSickCircleFragment = new SickCircleFragment();
         mMovieFragment = new MovieFragment();
-        list.add(mHomeFragment);
-        list.add(mSickCircleFragment);
-        list.add(mMovieFragment);
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.vp, mHomeFragment)
@@ -82,6 +78,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 .commit();
     }
 
+
+    public void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
+    }
 
     private void initView() {
         sick_circle_img = (ImageView) findViewById(R.id.sick_circle_img);
@@ -143,10 +143,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     .commit();
 
         } else if (v.getId() == R.id.comments_img) {
+
+            comments_img.setVisibility(View.VISIBLE);
+            sick_circle_img.setVisibility(View.GONE);
+
             startActivity(new Intent(HomeActivity.this, WriteSickCircleActivity.class));
         }
     }
-
 
     //对返回键进行监听
     @Override

@@ -1,7 +1,9 @@
 package com.wd.health_home_fragment.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,13 +19,20 @@ import com.wd.common.bean.CommonDrugBean;
 import com.wd.common.bean.DiseaseBean;
 import com.wd.common.bean.DivisionBean;
 import com.wd.common.bean.DrugBean;
+import com.wd.common.bean.User;
 import com.wd.common.constraint.Constraint;
+import com.wd.common.dao.DaoMaster;
+import com.wd.common.dao.DaoSession;
+import com.wd.common.dao.UserDao;
 import com.wd.health_home_fragment.R;
 import com.wd.health_home_fragment.adapter.LeftAdapter;
 import com.wd.health_home_fragment.adapter.LeftDrugAdapter;
 import com.wd.health_home_fragment.adapter.RightAdapter;
 import com.wd.health_home_fragment.adapter.RightDrugAdapter;
 import com.wd.health_home_fragment.presenter.HomeTwoPresenter;
+import com.wd.health_my.MyActivity;
+
+import java.util.List;
 
 public class DiseaseActivity extends BaseActivity<HomeTwoPresenter> implements Constraint.IHomeTow, View.OnClickListener {
 
@@ -144,6 +153,25 @@ public class DiseaseActivity extends BaseActivity<HomeTwoPresenter> implements C
     @Override
     protected void initListener() {
 
+        SharedPreferences config = getSharedPreferences("config", MODE_PRIVATE);
+        boolean isFirst = config.getBoolean("isFirst", false);
+        if (isFirst) {
+
+            DaoSession daoSession = DaoMaster.newDevSession(this, UserDao.TABLENAME);
+            UserDao userDao = daoSession.getUserDao();
+            List<User> users = userDao.loadAll();
+
+            String headPic = users.get(0).getHeadPic();
+
+            Uri uri = Uri.parse(headPic);
+            disease_login.setImageURI(uri);
+
+        } else {
+            Uri uri = Uri.parse("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&g=0.jpg");
+            disease_login.setImageURI(uri);
+        }
+
+
     }
 
     @Override
@@ -222,7 +250,7 @@ public class DiseaseActivity extends BaseActivity<HomeTwoPresenter> implements C
     public void onClick(View v) {
         if (v.getId() == R.id.disease_login) {
 
-            Toast.makeText(this, "登录", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, MyActivity.class));
 
         } else if (v.getId() == R.id.disease_news) {
 

@@ -22,6 +22,8 @@
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/disease_details_login"
+                app:roundAsCircle="true"
+                app:actualImageScaleType="centerCrop"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_marginLeft="2dp"

@@ -38,13 +38,33 @@ public class DivisionAdapter extends RecyclerView.Adapter<DivisionAdapter.Divisi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DivisionAdapter.DivisionViewHolder divisionViewHolder, int i) {
+    public void onBindViewHolder(@NonNull DivisionAdapter.DivisionViewHolder divisionViewHolder, final int i) {
 
         Uri uri = Uri.parse(mList.get(i).pic);
         divisionViewHolder.division_img.setImageURI(uri);
         divisionViewHolder.division_name.setText(mList.get(i).departmentName);
 
+        divisionViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onClick(mList.get(i).id);
+            }
+        });
+
     }
+
+
+    public interface OnItemClickListener {
+        void onClick(int position);
+    }
+
+    private OnItemClickListener listener;
+
+    //第二步， 写一个公共的方法
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
 
     @Override
     public int getItemCount() {

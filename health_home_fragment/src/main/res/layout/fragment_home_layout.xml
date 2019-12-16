@@ -12,13 +12,16 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <com.stx.xhb.xbanner.XBanner
                 android:id="@+id/home_inquiry_xBanner"
                 android:layout_width="match_parent"
-                android:layout_height="201dp" />
+                android:layout_height="200dp" />
+
 
 
             <LinearLayout
@@ -231,7 +234,6 @@
 
     </android.support.v4.widget.NestedScrollView>
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="52dp"
@@ -243,6 +245,8 @@
             android:id="@+id/home_inquiry_login"
             android:layout_width="32dp"
             android:layout_height="32dp"
+            app:roundAsCircle="true"
+            app:actualImageScaleType="centerCrop"
             android:layout_marginLeft="2dp"
             app:placeholderImage="@drawable/register_icon_invitatiion_code_n" />
 
@@ -284,5 +288,6 @@
             android:padding="5dp"
             android:src="@drawable/home_top_news" />
     </RelativeLayout>
+
 
 </RelativeLayout>

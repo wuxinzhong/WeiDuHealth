@@ -24,6 +24,8 @@
                 android:id="@+id/information_details_login"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
+                app:roundAsCircle="true"
+                app:actualImageScaleType="centerCrop"
                 android:layout_marginLeft="2dp"
                 android:padding="2dp"
                 app:placeholderImage="@drawable/register_icon_invitatiion_code_n" />
