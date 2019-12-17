@@ -1,6 +1,7 @@
 package com.wd.health_home_fragment.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,10 +18,13 @@ import android.widget.Toast;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wd.common.base.BaseActivity;
 import com.wd.common.bean.DivisionBean;
+import com.wd.common.bean.DoctorBean;
 import com.wd.common.constraint.Constraint;
 import com.wd.health_home_fragment.R;
 import com.wd.health_home_fragment.adapter.InterrogationAdapter;
 import com.wd.health_home_fragment.presenter.DivisionPresenter;
+
+import java.util.List;
 
 public class InterrogationActivity extends BaseActivity<DivisionPresenter> implements View.OnClickListener, Constraint.IDivisionView {
 
@@ -30,7 +34,7 @@ public class InterrogationActivity extends BaseActivity<DivisionPresenter> imple
     private LinearLayout interrogation_zonghe;
     private LinearLayout interrogation_haoping;
     private LinearLayout interrogation_zixunSum;
-    private TextView interrogation_price_paixu;
+    private LinearLayout interrogation_price_paixu;
     private ImageView interrogation_price_paixu_img;
     private SimpleDraweeView interrogation_img;
     private TextView interrogation_name;
@@ -46,6 +50,7 @@ public class InterrogationActivity extends BaseActivity<DivisionPresenter> imple
     private ImageView interrogation_img_right;
     private InterrogationAdapter mInterrogationAdapter;
     private int mId;
+    private int id;
 
     private static final String TAG = "InterrogationActivity";
 
@@ -61,13 +66,16 @@ public class InterrogationActivity extends BaseActivity<DivisionPresenter> imple
         mInterrogationAdapter.setOnItemClickListener(new InterrogationAdapter.OnItemClickListener() {
             @Override
             public void onClick(int position) {
-                if (position ==mId){
+                if (position == mId) {
                     mInterrogationAdapter.setPosition(mId);
                 }
+                id = position;
             }
         });
 
         presenter.division();
+        presenter.doctor(id, 1, 0, true, 3);
+
     }
 
     @Override
@@ -82,7 +90,7 @@ public class InterrogationActivity extends BaseActivity<DivisionPresenter> imple
         interrogation_zonghe = (LinearLayout) findViewById(R.id.interrogation_zonghe);
         interrogation_haoping = (LinearLayout) findViewById(R.id.interrogation_haoping);
         interrogation_zixunSum = (LinearLayout) findViewById(R.id.interrogation_zixunSum);
-        interrogation_price_paixu = (TextView) findViewById(R.id.interrogation_price_paixu);
+        interrogation_price_paixu = (LinearLayout) findViewById(R.id.interrogation_price_paixu);
         interrogation_price_paixu_img = (ImageView) findViewById(R.id.interrogation_price_paixu_img);
         interrogation_img = (SimpleDraweeView) findViewById(R.id.interrogation_img);
         interrogation_name = (TextView) findViewById(R.id.interrogation_name);
@@ -100,13 +108,17 @@ public class InterrogationActivity extends BaseActivity<DivisionPresenter> imple
         interrogation_btn_zixun.setOnClickListener(this);
         interrogation_login.setOnClickListener(this);
         interrogation_news.setOnClickListener(this);
+        interrogation_zonghe.setOnClickListener(this);
+        interrogation_haoping.setOnClickListener(this);
+        interrogation_zixunSum.setOnClickListener(this);
+        interrogation_price_paixu.setOnClickListener(this);
     }
 
     @Override
     protected void initListener() {
         Intent intent = getIntent();
-        mId = intent.getIntExtra("id",0);
-        Log.i(TAG, "initListener: "+mId);
+        mId = intent.getIntExtra("id", 0);
+        Log.i(TAG, "initListener: " + mId);
     }
 
     @Override
@@ -116,17 +128,33 @@ public class InterrogationActivity extends BaseActivity<DivisionPresenter> imple
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.interrogation_btn_zixun){
+        if (v.getId() == R.id.interrogation_btn_zixun) {
 
             Toast.makeText(this, "立即咨询", Toast.LENGTH_SHORT).show();
 
-        }else if (v.getId() == R.id.interrogation_login){
+        } else if (v.getId() == R.id.interrogation_login) {
 
             Toast.makeText(this, "登录", Toast.LENGTH_SHORT).show();
 
-        }else if (v.getId() == R.id.interrogation_news){
+        } else if (v.getId() == R.id.interrogation_news) {
 
             Toast.makeText(this, "消息", Toast.LENGTH_SHORT).show();
+
+        } else if (v.getId() == R.id.interrogation_zonghe) {
+
+            presenter.doctor(id, 1, 0, true, 3);
+
+        } else if (v.getId() == R.id.interrogation_haoping) {
+
+            presenter.doctor(id, 2, 0, true, 3);
+
+        } else if (v.getId() == R.id.interrogation_zixunSum) {
+
+            presenter.doctor(id, 3, 0, true, 3);
+
+        } else if (v.getId() == R.id.interrogation_price_paixu) {
+
+            presenter.doctor(id, 4, 0, true, 3);
 
         }
 
@@ -134,7 +162,7 @@ public class InterrogationActivity extends BaseActivity<DivisionPresenter> imple
 
     @Override
     public void IDivisionSuccess(DivisionBean divisionBean) {
-        if (divisionBean.status.equals("0000")){
+        if (divisionBean.status.equals("0000")) {
 
             mInterrogationAdapter.addAll(divisionBean.result);
             mInterrogationAdapter.notifyDataSetChanged();
@@ -144,6 +172,29 @@ public class InterrogationActivity extends BaseActivity<DivisionPresenter> imple
 
     @Override
     public void IDivisionError(String s) {
+
+    }
+
+    @Override
+    public void IDoctorSuccess(DoctorBean doctorBean) {
+        if (doctorBean.status.equals("0000")) {
+
+            List<DoctorBean.ResultBean> result = doctorBean.result;
+
+            Uri uri = Uri.parse(result.get(0).imagePic);
+            interrogation_img.setImageURI(uri);
+
+            interrogation_name.setText(result.get(0).doctorName);
+            interrogation_zhiwei.setText(result.get(0).jobTitle);
+            interrogation_adress.setText(result.get(0).inauguralHospital);
+            interrogation_haopinglu.setText("好评率   "+result.get(0).praise + "%");
+            interrogation_sum.setText("服务和患者数   "+result.get(0).serverNum);
+
+        }
+    }
+
+    @Override
+    public void IDoctorError(String s) {
 
     }
 }

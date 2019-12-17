@@ -24,11 +24,11 @@
                 android:id="@+id/interrogation_login"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                app:roundAsCircle="true"
-                app:actualImageScaleType="centerCrop"
                 android:layout_marginLeft="2dp"
                 android:padding="2dp"
-                app:placeholderImage="@drawable/register_icon_invitatiion_code_n" />
+                app:actualImageScaleType="centerCrop"
+                app:placeholderImage="@drawable/register_icon_invitatiion_code_n"
+                app:roundAsCircle="true" />
 
             <CheckBox
                 android:id="@+id/interrogation_news"
@@ -62,69 +62,126 @@
             android:id="@+id/interrogation_zonghe"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:text="综合"
+                android:textColor="#d92109"
                 android:textSize="14sp"
                 android:textStyle="bold" />
+
+            <View
+                android:id="@+id/interrogation_view1"
+                android:layout_width="50dp"
+                android:layout_height="3dp"
+                android:background="#d92109" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/interrogation_haoping"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:text="好评"
                 android:textSize="14sp"
                 android:textStyle="bold" />
+
+            <View
+                android:id="@+id/interrogation_view2"
+                android:layout_width="50dp"
+                android:layout_height="3dp"
+                android:background="#d92109"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/interrogation_zixunSum"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:text="咨询数"
                 android:textSize="14sp"
                 android:textStyle="bold" />
+
+            <View
+                android:id="@+id/interrogation_view3"
+                android:layout_width="50dp"
+                android:layout_height="3dp"
+                android:background="#d92109"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/interrogation_price_paixu"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/interrogation_price_paixu"
-                android:layout_width="35dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="价格"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/interrogation_price_paixu_img"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:src="@drawable/common_button_sequence_n" />
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="价格"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+
+                <ImageView
+                    android:id="@+id/interrogation_price_paixu_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:src="@drawable/common_button_sequence_n" />
+
+                <ImageView
+                    android:id="@+id/interrogation_price_moren_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:src="@drawable/common_button_ascending_s"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+
+            <View
+                android:id="@+id/interrogation_view4"
+                android:layout_width="50dp"
+                android:layout_height="3dp"
+                android:background="#d92109"
+                android:visibility="gone" />
 
         </LinearLayout>
 
@@ -224,8 +281,8 @@
             android:layout_height="40dp"
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="30dp"
-            android:background="@drawable/interrogation_bg_bottom"
             android:layout_marginRight="30dp"
+            android:background="@drawable/interrogation_bg_bottom"
             android:orientation="horizontal">
 
             <TextView

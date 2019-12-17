@@ -5,6 +5,7 @@ import com.wd.common.bean.CommonDrugBean;
 import com.wd.common.bean.DiseaseBean;
 import com.wd.common.bean.DiseaseDetailsBean;
 import com.wd.common.bean.DivisionBean;
+import com.wd.common.bean.DoctorBean;
 import com.wd.common.bean.DrugBean;
 import com.wd.common.bean.DrugDetailsBean;
 import com.wd.common.bean.EvaluatingBean;
@@ -51,6 +52,11 @@ public interface Constraint {
         void IDivisionSuccess(DivisionBean divisionBean);
 
         void IDivisionError(String s);
+
+        //查询医生列表
+        void IDoctorSuccess(DoctorBean doctorBean);
+
+        void IDoctorError(String s);
     }
 
     interface IInformationView extends IBaseView {
