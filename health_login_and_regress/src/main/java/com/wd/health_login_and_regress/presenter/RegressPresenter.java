@@ -1,9 +1,9 @@
 package com.wd.health_login_and_regress.presenter;
 
+import com.wd.common.constraint.Constraint;
 import com.wd.common.base.BasePresenter;
 import com.wd.common.bean.RegressBean;
 import com.wd.common.bean.SendEmailBean;
-import com.wd.common.constraint.Constraint;
 import com.wd.common.http.HttpUtils;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;

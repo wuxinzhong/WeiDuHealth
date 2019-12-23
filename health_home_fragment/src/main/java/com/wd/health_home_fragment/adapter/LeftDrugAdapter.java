@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.wd.common.bean.DivisionBean;
+
 import com.wd.common.bean.DrugBean;
 import com.wd.health_home_fragment.R;
 

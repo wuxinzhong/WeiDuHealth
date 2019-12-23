@@ -1,7 +1,6 @@
 package com.wd.health_home_fragment.adapter;
 
 import android.graphics.Color;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -39,6 +38,7 @@ public class InterrogationAdapter extends RecyclerView.Adapter<InterrogationAdap
     }
 
     private int position;
+    private int j;
 
     public int getPosition() {
         return position;
@@ -54,20 +54,28 @@ public class InterrogationAdapter extends RecyclerView.Adapter<InterrogationAdap
         divisionViewHolder.information_list_name.setText(mList.get(i).departmentName);
         divisionViewHolder.itemView.setTag(i);
 
-
-        if (i==getPosition()){
+        if (mList.get(i).id == getPosition()) {
             divisionViewHolder.information_list_name.setTextColor(Color.parseColor("#3087ea"));
-        }else {
+            listener.onClick(mList.get(i).id);
+        } else {
             divisionViewHolder.information_list_name.setTextColor(Color.parseColor("#333333"));
         }
+
+        if (i == j) {
+            divisionViewHolder.information_list_name.setTextColor(Color.parseColor("#3087ea"));
+            listener.onClick(mList.get(j).id);
+        } else {
+            divisionViewHolder.information_list_name.setTextColor(Color.parseColor("#333333"));
+        }
+
+
 
         divisionViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                position = (int) v.getTag();
-                listener.onClick(mList.get(position).id);
+                j = (int) v.getTag();
+                listener.onClick(mList.get(j).id);
                 notifyDataSetChanged();
-
             }
         });
 

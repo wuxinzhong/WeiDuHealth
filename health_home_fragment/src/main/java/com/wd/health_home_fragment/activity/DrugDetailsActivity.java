@@ -3,13 +3,13 @@ package com.wd.health_home_fragment.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+
 import com.wd.common.base.BaseActivity;
 import com.wd.common.bean.DrugDetailsBean;
 import com.wd.common.bean.User;

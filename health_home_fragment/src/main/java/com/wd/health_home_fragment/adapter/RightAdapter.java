@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+
 import com.wd.common.bean.DiseaseBean;
 import com.wd.health_home_fragment.R;
 

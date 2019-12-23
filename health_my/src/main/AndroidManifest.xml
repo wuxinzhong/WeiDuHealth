@@ -3,7 +3,10 @@
     package="com.wd.health_my">
 
     <application>
-        <activity android:name=".MyActivity"></activity>
+        <activity android:name=".AttentionActivity"></activity>
+        <activity android:name=".SettingActivity" />
+        <activity android:name=".SignActivity" />
+        <activity android:name=".MyActivity" />
     </application>
 
 </manifest>

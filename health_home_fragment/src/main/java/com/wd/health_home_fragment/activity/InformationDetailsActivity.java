@@ -4,9 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.net.http.SslError;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Html;
 import android.view.View;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebView;
@@ -16,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+
 import com.wd.common.base.BaseActivity;
 import com.wd.common.bean.InformationDetailsBean;
 import com.wd.common.bean.User;

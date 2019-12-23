@@ -1,5 +1,6 @@
 package com.wd.health_home_fragment.presenter;
 
+
 import com.wd.common.base.BasePresenter;
 import com.wd.common.bean.InformationDetailsBean;
 import com.wd.common.constraint.Constraint;

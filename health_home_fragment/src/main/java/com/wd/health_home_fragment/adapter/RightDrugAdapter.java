@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+
 import com.wd.common.bean.CommonDrugBean;
-import com.wd.common.bean.DiseaseBean;
 import com.wd.health_home_fragment.R;
 
 import java.util.ArrayList;

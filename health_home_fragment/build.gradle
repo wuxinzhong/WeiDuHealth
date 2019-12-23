@@ -59,6 +59,6 @@ dependencies {
     //阿里aRouter
     implementation 'com.alibaba:arouter-api:1.4.0'
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
-    api project(':common')
     implementation project(':health_my')
+    implementation project(':common')
 }

@@ -21,7 +21,6 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.wd.common.base.BaseActivity;
 import com.wd.common.bean.LoginBean;
@@ -36,7 +35,8 @@ import com.wd.health_login_and_regress.presenter.LoginPresenter;
 import com.wd.health_login_and_regress.toast.CustomToast;
 import com.wd.health_login_and_regress.util.RecordClickSpan;
 
-import java.net.URLDecoder;
+//import cn.jpush.im.android.api.JMessageClient;
+//import cn.jpush.im.api.BasicCallback;
 
 public class LoginActivity extends BaseActivity<LoginPresenter> implements View.OnClickListener, Constraint.ILoginView {
 
@@ -54,6 +54,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
 
 
     private static final String TAG = "LoginActivity";
+    private String mS;
 
     @Override
     protected void initData() {
@@ -157,12 +158,12 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
             if (submit()) {
 
                 try {
-                    String s = RsaCoder.encryptByPublicKey(mPwd);
+                    mS = RsaCoder.encryptByPublicKey(mPwd);
 
                     Log.i(TAG, "onClick: " + mPwd);
 
                     isEmail(mEmail);
-                    presenter.login(mEmail, s);
+                    presenter.login(mEmail, mS);
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -222,6 +223,15 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
             toastMessage(loginBean.message);
 //            Toast.makeText(this, loginBean.message, Toast.LENGTH_SHORT).show();
 
+//            JMessageClient.login(mEmail, mS, new BasicCallback() {
+//                @Override
+//                public void gotResult(int i, String s) {
+//                    if (i == 0){
+//                        presenter.login(mEmail, mS);
+//                    }
+//                }
+//            });
+
             SharedPreferences config = getSharedPreferences("config", MODE_PRIVATE);
             SharedPreferences.Editor edit = config.edit();
             edit.putBoolean("isFirst", true);
@@ -244,6 +254,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements View.
             user.setWhetherBingWeChat(result.whetherBingWeChat);
 
             userDao.insertOrReplace(user);
+
 
             finish();
 

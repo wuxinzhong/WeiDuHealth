@@ -2,7 +2,6 @@ package com.wd.health_home_fragment.activity;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,11 +15,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
+
 import com.wd.common.base.BaseActivity;
 import com.wd.common.bean.DivisionBean;
 import com.wd.common.bean.DoctorBean;
 import com.wd.common.constraint.Constraint;
 import com.wd.health_home_fragment.R;
+import com.wd.health_home_fragment.adapter.DoctorRecycleAdapter;
 import com.wd.health_home_fragment.adapter.InterrogationAdapter;
 import com.wd.health_home_fragment.presenter.DivisionPresenter;
 
@@ -53,9 +55,24 @@ public class InterrogationActivity extends BaseActivity<DivisionPresenter> imple
     private int id;
 
     private static final String TAG = "InterrogationActivity";
+    private DoctorRecycleAdapter mDoctorRecycleAdapter;
 
     @Override
     protected void initData() {
+
+        //下面的医生列表
+        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(this);
+        linearLayoutManager1.setOrientation(LinearLayoutManager.HORIZONTAL);
+        interrogation_doctor_recycle.setLayoutManager(linearLayoutManager1);
+        mDoctorRecycleAdapter = new DoctorRecycleAdapter();
+        interrogation_doctor_recycle.setAdapter(mDoctorRecycleAdapter);
+        mDoctorRecycleAdapter.setOnItemClickListener(new DoctorRecycleAdapter.OnItemClickListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        });
+
 
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -63,18 +80,17 @@ public class InterrogationActivity extends BaseActivity<DivisionPresenter> imple
         interrogation_recycle_kemu.setLayoutManager(linearLayoutManager);
         mInterrogationAdapter = new InterrogationAdapter();
         interrogation_recycle_kemu.setAdapter(mInterrogationAdapter);
+        mInterrogationAdapter.setPosition(mId);
         mInterrogationAdapter.setOnItemClickListener(new InterrogationAdapter.OnItemClickListener() {
             @Override
             public void onClick(int position) {
-                if (position == mId) {
-                    mInterrogationAdapter.setPosition(mId);
-                }
                 id = position;
+                presenter.doctor(id, 1, 0, true, 6);
             }
         });
 
         presenter.division();
-        presenter.doctor(id, 1, 0, true, 3);
+        presenter.doctor(id, 1, 0, true, 6);
 
     }
 
@@ -134,7 +150,7 @@ public class InterrogationActivity extends BaseActivity<DivisionPresenter> imple
 
         } else if (v.getId() == R.id.interrogation_login) {
 
-            Toast.makeText(this, "登录", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "我的", Toast.LENGTH_SHORT).show();
 
         } else if (v.getId() == R.id.interrogation_news) {
 
@@ -142,19 +158,19 @@ public class InterrogationActivity extends BaseActivity<DivisionPresenter> imple
 
         } else if (v.getId() == R.id.interrogation_zonghe) {
 
-            presenter.doctor(id, 1, 0, true, 3);
+            presenter.doctor(id, 1, 0, true, 6);
 
         } else if (v.getId() == R.id.interrogation_haoping) {
 
-            presenter.doctor(id, 2, 0, true, 3);
+            presenter.doctor(id, 2, 0, true, 6);
 
         } else if (v.getId() == R.id.interrogation_zixunSum) {
 
-            presenter.doctor(id, 3, 0, true, 3);
+            presenter.doctor(id, 3, 0, true, 6);
 
         } else if (v.getId() == R.id.interrogation_price_paixu) {
 
-            presenter.doctor(id, 4, 0, true, 3);
+            presenter.doctor(id, 4, 1, true, 6);
 
         }
 
@@ -187,8 +203,15 @@ public class InterrogationActivity extends BaseActivity<DivisionPresenter> imple
             interrogation_name.setText(result.get(0).doctorName);
             interrogation_zhiwei.setText(result.get(0).jobTitle);
             interrogation_adress.setText(result.get(0).inauguralHospital);
-            interrogation_haopinglu.setText("好评率   "+result.get(0).praise + "%");
-            interrogation_sum.setText("服务和患者数   "+result.get(0).serverNum);
+            interrogation_haopinglu.setText("好评率 " + result.get(0).praise);
+            interrogation_sum.setText("服务和患者数 " + result.get(0).serverNum);
+
+
+            mDoctorRecycleAdapter.clean();
+            mDoctorRecycleAdapter.addAll(doctorBean.result);
+            mDoctorRecycleAdapter.notifyDataSetChanged();
+
+
 
         }
     }

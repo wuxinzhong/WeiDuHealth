@@ -3,7 +3,6 @@ package com.wd.health_home_fragment.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
@@ -13,6 +12,7 @@ import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+
 import com.wd.common.base.BaseActivity;
 import com.wd.common.bean.InformationBean;
 import com.wd.common.bean.User;

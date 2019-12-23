@@ -1,1 +1,1 @@
-include ':app', ':health_home', ':common', ':health_home_fragment', ':health_sick_circle_fragment', ':health_movie_fragment', ':health_write_sick_circle_activity', ':health_my', ':health_login_and_regress'
+include ':app', ':health_home', ':common', ':health_home_fragment', ':health_sick_circle_fragment', ':health_movie_fragment', ':health_write_sick_circle_activity', ':health_my', ':health_login_and_regress', ':health'

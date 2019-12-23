@@ -1,10 +1,10 @@
 package com.wd.health_home_fragment.activity;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
 
 import com.wd.common.base.BaseActivity;
 import com.wd.common.bean.EvaluatingBean;

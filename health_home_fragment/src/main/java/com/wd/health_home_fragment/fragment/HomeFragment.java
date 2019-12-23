@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.stx.xhb.xbanner.XBanner;
 import com.stx.xhb.xbanner.transformers.Transformer;
+
 import com.wd.common.base.BaseFragment;
 import com.wd.common.bean.BannerBean;
 import com.wd.common.bean.DivisionBean;
@@ -198,7 +198,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements Constra
 //                    img.setImageURI(uri);
                 }
             });
-            home_inquiry_xBanner.setPageTransformer(Transformer.Cube);
+            home_inquiry_xBanner.setPageTransformer(Transformer.Default);
             home_inquiry_xBanner.setPageChangeDuration(3000);
             home_inquiry_xBanner.startAutoPlay();
 

@@ -8,7 +8,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -19,13 +18,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+
 import com.wd.common.bean.User;
 import com.wd.common.dao.DaoMaster;
 import com.wd.common.dao.DaoSession;
 import com.wd.common.dao.UserDao;
 import com.wd.health_login_and_regress.activity.LoginActivity;
-import com.wd.health_login_and_regress.activity.RegressActivity;
-import com.wd.health_login_and_regress.toast.CustomToast;
 
 import java.util.List;
 
@@ -140,6 +138,8 @@ public class MyActivity extends AppCompatActivity implements View.OnClickListene
         my_sign.setOnClickListener(this);
         my_back.setOnClickListener(this);
         my_header.setOnClickListener(this);
+        my_setting.setOnClickListener(this);
+        my_attention.setOnClickListener(this);
     }
 
 
@@ -148,6 +148,19 @@ public class MyActivity extends AppCompatActivity implements View.OnClickListene
         if (v.getId() == R.id.my_back) {
             finish();
         } else if (v.getId() == R.id.my_sign) {
+
+            //签到
+            startActivity(new Intent(this, SignActivity.class));
+
+        } else if (v.getId() == R.id.my_setting) {
+
+            //设置
+            startActivity(new Intent(this, SettingActivity.class));
+
+        } else if (v.getId() == R.id.my_attention) {
+
+            //关注
+            startActivity(new Intent(this, AttentionActivity.class));
 
         } else if (v.getId() == R.id.my_header) {
 
@@ -158,7 +171,6 @@ public class MyActivity extends AppCompatActivity implements View.OnClickListene
             } else {
                 startActivity(new Intent(MyActivity.this, LoginActivity.class));
             }
-
 
         }
     }

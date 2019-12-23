@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AttentionActivity">
+
+    <RelativeLayout
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_height="44dp">
+
+        <ImageView
+            android:id="@+id/head_details_back"
+            android:layout_width="16sp"
+            android:layout_centerVertical="true"
+            android:layout_height="16sp"
+            android:src="@drawable/common_icon_back_black_n" />
+        <TextView
+            android:textStyle="bold"
+            android:text="我的关注"
+            android:layout_centerHorizontal="true"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:background="#F2F2F2"
+        android:layout_width="match_parent"
+        android:layout_height="4dp">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/record_linear_layout"
+        android:layout_marginTop="150dp"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:background="@drawable/no_message"
+            android:layout_width="126dp"
+            android:layout_height="135dp"/>
+        <TextView
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="您暂无任何关注信息"
+            android:layout_marginTop="30dp"
+            android:textSize="14sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</LinearLayout>

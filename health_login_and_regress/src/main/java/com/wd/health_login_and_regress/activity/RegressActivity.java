@@ -1,6 +1,5 @@
 package com.wd.health_login_and_regress.activity;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
@@ -12,7 +11,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.wd.common.base.BaseActivity;
@@ -23,6 +21,9 @@ import com.wd.health_login_and_regress.R;
 import com.wd.health_login_and_regress.RsaCoder;
 import com.wd.health_login_and_regress.presenter.RegressPresenter;
 import com.wd.health_login_and_regress.toast.CustomToast;
+
+//import cn.jpush.im.android.api.JMessageClient;
+//import cn.jpush.im.api.BasicCallback;
 
 public class RegressActivity extends BaseActivity<RegressPresenter> implements View.OnClickListener, Constraint.IRegressView {
 
@@ -46,6 +47,7 @@ public class RegressActivity extends BaseActivity<RegressPresenter> implements V
 
 
     private static final String TAG = "RegressActivity";
+    private String mS;
 
     @Override
     protected void initData() {
@@ -170,8 +172,8 @@ public class RegressActivity extends BaseActivity<RegressPresenter> implements V
                         toastMessage("两次输入密码不一样");
                     } else {
                         isEmail(mEmail1);
-                        String s = RsaCoder.encryptByPublicKey(mPwd);
-                        presenter.regress(mEmail1, mCode, s, s, mCode1);
+                        mS = RsaCoder.encryptByPublicKey(mPwd);
+                        presenter.regress(mEmail1, mCode, mS, mS, mCode1);
                     }
                 }
 
@@ -190,6 +192,14 @@ public class RegressActivity extends BaseActivity<RegressPresenter> implements V
 
 //            toastMessage(regressBean.message);
             Toast.makeText(this, regressBean.message, Toast.LENGTH_SHORT).show();
+
+//            JMessageClient.register(mEmail1, mS, new BasicCallback() {
+//                @Override
+//                public void gotResult(int i, String s) {
+//                    presenter.regress(mEmail1, mCode, mS, mS, mCode1);
+//                }
+//            });
+
             finish();
         }
     }

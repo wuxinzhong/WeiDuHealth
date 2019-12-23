@@ -197,7 +197,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="270dp"
+            android:layout_height="266dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="16dp"
             android:layout_marginRight="30dp"
@@ -208,7 +208,10 @@
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/interrogation_img"
                 android:layout_width="match_parent"
-                android:layout_height="184dp" />
+                android:layout_height="180dp"
+                android:layout_marginLeft="70dp"
+                android:layout_marginRight="70dp"
+                android:paddingTop="10dp" />
 
             <TextView
                 android:id="@+id/interrogation_name"
